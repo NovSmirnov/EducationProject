@@ -1,10 +1,21 @@
 package educationProject;
 
+import com.google.gson.annotations.SerializedName;
+
 public class University {
+    @SerializedName("University s ID")
     private String id;
+
+    @SerializedName("University s full name")
     private String fullName;
+
+    @SerializedName("University s short name")
     private String shortName;
+
+    @SerializedName("University s year of foundation")
     private int yearOfFoundation;
+
+    @SerializedName("Study profile of university")
     private StudyProfile mainProfile;
 
     public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
