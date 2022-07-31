@@ -2,8 +2,8 @@ package educationProject;
 
 public enum StudyProfile {
     MEDICINE ("Медицина"),
-    ECONOMICS ("Экономика"),
-    ENGINEERING ("Инженерия"),
+//    ECONOMICS ("Экономика"),
+//    ENGINEERING ("Инженерия"),
     PHYSICS ("Физика"),
     MATHEMATICS ("Математика"),
     LINGUISTICS ("Лингвистика");

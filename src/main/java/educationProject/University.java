@@ -2,6 +2,10 @@ package educationProject;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 public class University {
     @SerializedName("University s ID")
     private String id;
@@ -17,6 +21,10 @@ public class University {
 
     @SerializedName("Study profile of university")
     private StudyProfile mainProfile;
+
+    public University() {
+
+    }
 
     public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
         this.id = id;
@@ -50,23 +58,27 @@ public class University {
         this.mainProfile = mainProfile;
         return this;
     }
-
+    @XmlElement(name = "universityId")
     public String getId() {
         return id;
     }
 
+    @XmlElement(name = "universityName")
     public String getFullName() {
         return fullName;
     }
 
+    @XmlTransient
     public String getShortName() {
         return shortName;
     }
 
+    @XmlTransient
     public int getYearOfFoundation() {
         return yearOfFoundation;
     }
 
+    @XmlElement(name = "universityProfile")
     public StudyProfile getMainProfile() {
         return mainProfile;
     }

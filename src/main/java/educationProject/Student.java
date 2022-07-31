@@ -2,6 +2,10 @@ package educationProject;
 
 import com.google.gson.annotations.SerializedName;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
 public class Student {
     @SerializedName("Student s name")
     private String fullName;
@@ -14,6 +18,10 @@ public class Student {
 
     @SerializedName("Average score of exams")
     private float advExamScore;
+
+    public Student() {
+
+    }
 
     public Student(String fullName, String universityId, int currentCourseNumber, float advExamScore) {
         this.fullName = fullName;
@@ -42,18 +50,22 @@ public class Student {
         return this;
     }
 
+    @XmlElement(name = "studentName")
     public String getFullName() {
         return fullName;
     }
 
+    @XmlElement(name = "universityId")
     public String getUniversityId() {
         return universityId;
     }
 
+    @XmlTransient
     public int getCurrentCourseNumber() {
         return currentCourseNumber;
     }
 
+    @XmlElement(name = "avgScore")
     public float getAdvExamScore() {
         return advExamScore;
     }

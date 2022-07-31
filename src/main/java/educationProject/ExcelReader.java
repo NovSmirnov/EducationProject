@@ -1,5 +1,7 @@
 package educationProject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ExcelReader {
+    private static final Logger logger = LogManager.getLogger(ExcelReader.class);
 
     private ExcelReader() {
     }
@@ -34,8 +37,9 @@ public class ExcelReader {
                 Student student = new Student(fullName, universityId, currentCourseNumber, advExamScore);
                 studentsList.add(student);
             }
+            logger.info("Лист информации о студентах из файла Excel успешно прочитан!");
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Ошибка чтения файла с информацией о студентах : \n" + e);
         }
         return studentsList;
     }
@@ -62,8 +66,10 @@ public class ExcelReader {
                 University university = new University(universityId, fullName, shortName, yearOfFoundation, profile);
                 universitiesList.add(university);
             }
+            logger.info("Лист информации об университетах из файла Excel успешно прочитан!");
+
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Ошибка чтения файла с информацией об университетах : \n" + e);
         }
         return universitiesList;
     }

@@ -1,5 +1,7 @@
 package educationProject;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.*;
 
 import java.io.FileOutputStream;
@@ -10,6 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class XlsWriter {
+    private static final Logger logger = LogManager.getLogger(XlsWriter.class);
+
+    private XlsWriter() {
+
+    }
 
     public static void tableGenerator(ArrayList<Statistics> statistics, String path) {
         XSSFWorkbook book = new XSSFWorkbook();
@@ -48,6 +55,7 @@ public class XlsWriter {
 
             }
         }
+        logger.info("Книга excel успешно сгенерирована!");
         tableToFile(book, path);
     }
 
@@ -56,9 +64,10 @@ public class XlsWriter {
             FileOutputStream out = new FileOutputStream(path);
             book.write(out);
             out.close();
+            logger.info("stat.xlsx файл успешно создан!");
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Ошибка ввода/вывода при записи stat.xlsx файла: \n" + e);
         }
     }
 
